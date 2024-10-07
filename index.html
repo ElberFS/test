@@ -9,8 +9,19 @@
 <body>
     <div class="container">
         <button id="sleepyButton">Haz click aquí</button>
+        <p id="message" class="hidden">Tengo sueño</p>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const button = document.getElementById("sleepyButton");
+            const message = document.getElementById("message");
+
+            button.addEventListener("click", function() {
+                message.classList.remove("hidden");  // Mostrar el mensaje
+                message.classList.add("show");  // Añadir animación
+            });
+        });
+    </script>
 </body>
 </html>

@@ -20,8 +20,27 @@ button {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #2980b9;
+}
+
+p {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(10px); /* Aparece suavemente desde abajo */
 }
