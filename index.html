@@ -1,27 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botón de Mensaje</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            /* Para evitar barras de desplazamiento */
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .message {
+            font-size: 24px;
+            color: #2c3e50;
+            position: absolute;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Animación para que el mensaje aparezca suavemente */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <button id="sleepyButton">Haz click aquí</button>
-        <p id="message" class="hidden">Tengo sueño</p>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const button = document.getElementById("sleepyButton");
-            const message = document.getElementById("message");
 
-            button.addEventListener("click", function() {
-                message.classList.remove("hidden");  // Mostrar el mensaje
-                message.classList.add("show");  // Añadir animación
+            button.addEventListener("click", function () {
+                // Crear un nuevo elemento de párrafo
+                const newMessage = document.createElement("p");
+                newMessage.textContent = "Tengo sueño";
+                newMessage.classList.add("message");
+
+                // Establecer una posición aleatoria
+                const x = Math.floor(Math.random() * window.innerWidth) - 50; // Ajuste de -50 para mantener el texto visible
+                const y = Math.floor(Math.random() * window.innerHeight) - 50;
+
+                // Aplicar la posición aleatoria
+                newMessage.style.position = 'absolute';
+                newMessage.style.left = `${x}px`;
+                newMessage.style.top = `${y}px`;
+
+                // Agregar el mensaje al body
+                document.body.appendChild(newMessage);
             });
         });
     </script>
 </body>
+
 </html>
